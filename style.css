@@ -6,3 +6,42 @@
     right: 0;
     width: 100%;
 }
+
+.gradient-legend {
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+    background: rgba(43, 28, 11, 0.808);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 250px;
+}
+
+.gradient-legend h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffe4ca;
+}
+
+.gradient-bar {
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(to right, #ffffff, #C8E6C9, #F44336, #B71C1C);
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #bb8f5d;
+}
+
+.gradient-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: bold;
+    color: #ffe4ca;
+    margin-top: 5px;
+}
+

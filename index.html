@@ -17,8 +17,26 @@
 
 <body>
 
-    <!-- MAP CONTAINER -->
+    <!-- Map container -->
     <div id='map' class='map'></div>
+
+    <!-- Legend -->
+    <div id="collision-legend" class="gradient-legend">
+        <h4>Pedestrian & Cyclist Collisions</h4>
+        <div class="gradient-bar"></div>
+        <!-- create labels -->
+        <div class="gradient-labels" id="legend-labels"> 
+            <span id="val-0">0</span>
+            <span id="val-25">25%</span>
+            <span id="val-50">50%</span>
+            <span id="val-75">75%</span>
+            <span id="val-100">Max</span>
+        </div>
+        <!-- Axis title -->
+        <div style="text-align: center; margin-top: 8px; font-size: 10px; color: #646464;">
+            Collision count per hexagon
+        </div>
+    </div>
 
     <script src="script.js"></script>
 
