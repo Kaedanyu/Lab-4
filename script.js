@@ -28,7 +28,7 @@ Step 2: VIEW GEOJSON POINT DATA ON MAP
 --------------------------------------------------------------------*/
 //HINT: Create an empty variable
 let pc_collision;
-fetch('https://raw.githubusercontent.com/Kaedanyu/Lab-4/refs/heads/main/data/pedcyc_collision_06-21.geojson')
+fetch('https://kaedanyu.github.io/Lab-4/data/pedcyc_collision_06-21.geojson')
     .then(response => response.json())
     .then(response => {
         // console.log(response);
@@ -48,7 +48,7 @@ fetch('https://raw.githubusercontent.com/Kaedanyu/Lab-4/refs/heads/main/data/ped
 map.on('load', () => {
     let envresult = turf.envelope(pc_collision);
     let bboxscaled = turf.transformScale(envresult, 1.1);
-    console.log('bounding box', bboxscaled)
+    // console.log('bounding box', bboxscaled)
 
     let bboxcoords = [
         bboxscaled.geometry.coordinates[0][0][0],
@@ -121,6 +121,8 @@ map.on('load', () => {
         },
     });
 });
+
+
 //HINT: Use Turf collect function to collect all '_id' properties from the collision points data for each heaxagon
 //      View the collect output in the console. Where there are no intersecting points in polygons, arrays will be empty
 
@@ -130,11 +132,25 @@ map.on('load', () => {
 // Step 5: FINALIZE YOUR WEB MAP
 // --------------------------------------------------------------------*/
 
+// Click each hexagon to see collision count
 map.on("click", "collishexfill", (e) => {
     new mapboxgl.Popup()
         .setLngLat(e.lngLat)
         .setHTML("<b>Collision count: </b>" + e.features[0].properties.COUNT)
         .addTo(map);
+});
+
+// Checkbox functionality to toggle hexgrid
+const toggleCheckbox = document.getElementById('hexgrid-toggle');
+
+toggleCheckbox.addEventListener('change', function() {
+    if (this.checked) {
+        // Show the layer
+        map.setLayoutProperty('collishexfill', 'visibility', 'visible');
+    } else {
+        // Hide the layer
+        map.setLayoutProperty('collishexfill', 'visibility', 'none');
+    }
 });
 
 //HINT: Think about the display of your data and usability of your web map.
